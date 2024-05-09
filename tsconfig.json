@@ -1,0 +1,13 @@
+{
+  "extends": "@finsweet/tsconfig",
+  "compilerOptions": {
+    "rootDir": ".",
+    "baseUrl": "./",
+    "paths": {
+      "$utils/*": ["src/utils/*"]
+    },
+    "target": "es2020",
+    "module": "ESNext",
+    "types": ["@finsweet/ts-utils"]
+  }
+}

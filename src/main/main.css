@@ -1,0 +1,27 @@
+.ac-trigger {
+  transition: color 0.25s ease;
+  position: relative;
+}
+.ac-trigger::after {
+  content: '+';
+  text-align: center;
+  width: 1rem;
+  transform: translate(0, -50%);
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+}
+.ac-panel {
+  overflow: hidden;
+  transition-property: height, visibility;
+  transition-timing-function: ease;
+}
+.ac.js-enabled > .ac-panel {
+  visibility: hidden;
+}
+.ac.js-enabled.is-active > .ac-panel {
+  visibility: visible;
+}
+.ac.is-active > .ac-header .ac-trigger::after {
+  content: '-';
+}
