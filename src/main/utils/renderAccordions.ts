@@ -1,8 +1,9 @@
 import Accordion from 'accordion-js';
 
-export const renderAccordions = function (elements: Element[]) {
-  new Accordion(elements),
+export const renderAccordions = function (elements: Element[] | any) {
+  const acc = new Accordion(elements,
     {
-      duration: 400,
-  };
+      showMultiple: true,
+      openOnInit: [0],
+    })
 }

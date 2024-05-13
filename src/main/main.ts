@@ -3,6 +3,7 @@ import { onLoadAnimation } from "./utils/onLoadAnimation";
 import { renderAccordions } from "./utils/renderAccordions";
 import { revealAnimation } from "./utils/revealAnimation";
 
+//console.log('hello');
 //loader elements
 const loaderEl = document.querySelector('[p-selector="loader"]');
 const loaderLogoEl = document.querySelector('[p-selector="loader-logo"]');
