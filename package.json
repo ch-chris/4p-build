@@ -52,6 +52,7 @@
   },
   "dependencies": {
     "@finsweet/ts-utils": "^0.40.0",
+    "@splidejs/splide": "^4.1.4",
     "accordion-js": "^3.3.4",
     "gsap": "^3.12.5"
   },
