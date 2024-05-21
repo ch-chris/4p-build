@@ -1,9 +1,9 @@
-import { loaderAnimation } from "./utils/loaderAnimation";
-import { onLoadAnimation } from "./utils/onLoadAnimation";
-import { renderAccordions } from "./utils/renderAccordions";
-import { revealAnimation } from "./utils/revealAnimation";
+import gsap from 'gsap';
+import { loaderAnimation } from './utils/loaderAnimation';
+import { onLoadAnimation } from './utils/onLoadAnimation';
+import { renderAccordions } from './utils/renderAccordions';
+import { revealAnimation } from './utils/revealAnimation';
 
-//console.log('hello');
 //loader elements
 const loaderEl = document.querySelector('[p-selector="loader"]');
 const loaderLogoEl = document.querySelector('[p-selector="loader-logo"]');
@@ -46,3 +46,24 @@ if (accordions.length > 0) {
 } else {
   console.log('No accordion elements found.');
 }
+
+//mobile nav
+const mobileNavTrigger = document.querySelector('[p-nav="trigger"]');
+const mobileNavMenu = document.querySelector('[p-nav="menu"]');
+let isOpen = false;
+const mobileNavTimeline = gsap.timeline({ paused: true });
+
+mobileNavTimeline.fromTo(
+  mobileNavMenu,
+  { x: '100%', opacity: 0 },
+  { x: '0%', opacity: 1, display: 'flex' }
+);
+
+mobileNavTrigger?.addEventListener('click', function () {
+  if (isOpen) {
+    mobileNavTimeline.reverse();
+  } else {
+    mobileNavTimeline.play();
+  }
+  isOpen = !isOpen;
+});
