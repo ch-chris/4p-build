@@ -26,7 +26,7 @@ changeAttr(modalCloseEls, 'close');
 //timeline splide
 const splideMainEl: HTMLElement = document.querySelector('[p-slider="main"]')!;
 const splideNavEl: HTMLElement = document.querySelector('[p-slider="nav"]')!;
-const dots = document.querySelectorAll('.timeline_path_dot');
+const dots = document.querySelectorAll('.about_timeline_path_dot');
 dots[0].classList.add('is-active');
 document.addEventListener('DOMContentLoaded', function () {
   let splideMain = new Splide(splideMainEl, {
