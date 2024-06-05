@@ -1,4 +1,7 @@
 import Splide from '@splidejs/splide';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
 
 //cms modal setting attributes
 const modalOpenEls = Array.from(
@@ -25,9 +28,13 @@ changeAttr(modalCloseEls, 'close');
 
 //timeline splide
 const splideMainEl: HTMLElement = document.querySelector('[p-slider="main"]')!;
-const splideNavEl: HTMLElement = document.querySelector('[p-slider="nav"]')!;
-const dots = document.querySelectorAll('.about_timeline_path_dot');
-dots[0].classList.add('is-active');
+const splideModalEl: HTMLElement =
+  document.querySelector('[p-slider="modal"]')!;
+const modalButtons = document.querySelectorAll('.timeline_modal-button');
+
+const timelineItems = document.querySelectorAll('[p-selector="timeline-item"]');
+timelineItems[0].classList.add('is-active');
+
 document.addEventListener('DOMContentLoaded', function () {
   let splideMain = new Splide(splideMainEl, {
     autoWidth: true,
@@ -35,32 +42,60 @@ document.addEventListener('DOMContentLoaded', function () {
     pagination: false,
     trimSpace: false,
     live: false,
-    dragMinThreshold: 20,
   });
-  let splideNav = new Splide(splideNavEl, {
-    autoWidth: true,
-    arrows: false,
+  let splideModal = new Splide(splideModalEl, {
     pagination: false,
-    trimSpace: false,
-    isNavigation: true,
-    dragMinThreshold: 20,
+    live: false,
   });
-  splideMain.sync(splideNav);
+
   splideMain.mount();
-  splideNav.mount();
-  //set active dot class on active
+  splideModal.mount();
+
+  //set active timelineItem class on splide active
   splideMain.on('active', function () {
     //get slideIndex
     let slideIdx = splideMain.Components.Controller.getIndex();
-    dots.forEach((dot) => {
-      dot.classList.remove('is-active');
+    timelineItems.forEach((item) => {
+      item.classList.remove('is-active');
     });
-    dots[slideIdx].classList.add('is-active');
+    timelineItems[slideIdx].classList.add('is-active');
+  });
+
+  modalButtons.forEach((modalButton, i) => {
+    modalButton.addEventListener('click', () => {
+      splideModal.options = { speed: 0 };
+      splideMain.go(i);
+      setTimeout(() => {
+        splideModal.go(i);
+        splideModal.options = { speed: 400 };
+      }, 250);
+    });
   });
 });
 
-//timeline path, add class on last element
-const timelinePaths = Array.from(
-  document.querySelectorAll('[p-selector="timeline-path"]')
+//drag cursor animation
+const dragEl = document.querySelector('[p-selector="drag"]');
+gsap.fromTo(
+  dragEl,
+  {
+    opacity: 1,
+    x: 0,
+  },
+  {
+    opacity: 0,
+    duration: 1,
+    x: 25,
+    scrollTrigger: {
+      trigger: dragEl,
+      start: 'top 75%',
+    },
+    ease: 'power1.inOut',
+    repeat: 4,
+    yoyo: true,
+    onComplete: endCursorAnimation,
+  }
 );
-timelinePaths[timelinePaths.length - 1].classList.add('is-last');
+
+function endCursorAnimation() {
+  dragEl?.classList.add('hide');
+}
