@@ -23,13 +23,35 @@ gsap.fromTo(
 const homeDotEl = document.querySelectorAll('[p-selector="dot"]');
 const homeDotInnerEl = document.querySelectorAll('[p-selector="dot-inner"]');
 const homeLineEl = document.querySelectorAll('[p-selector="line"]');
+const homeHeader = document.querySelectorAll('[p-selector="header"]');
+const yearEl = document.querySelectorAll('[p-selector="number"]');
+
 let homeAnim = gsap.timeline({
-  defaults: { duration: 1 },
+  defaults: { duration: 0.25 },
   scrollTrigger: {
     trigger: homeDotEl,
-    start: 'top 55%',
+    start: 'top 50%',
   },
 });
 homeAnim.fromTo(homeDotEl, { opacity: 0 }, { opacity: 1 });
 homeAnim.fromTo(homeDotInnerEl, { opacity: 0 }, { opacity: 1 });
-homeAnim.fromTo(homeLineEl, { height: '0%' }, { height: '50%' });
+homeAnim.fromTo(homeHeader, { opacity: 0 }, { opacity: 1 });
+homeAnim.fromTo(homeLineEl, { height: '0%' }, { height: '100%' });
+homeAnim.from(yearEl, {
+  textContent: 1,
+  duration: 2,
+  ease: 'power1.outIn',
+  snap: { textContent: 1 },
+  stagger: 1,
+});
+
+// gsap.from(items, {
+//   textContent: 0,
+//   duration: 1,
+//   snap: { textContent: 1 },
+//   stagger: 1,
+//   scrollTrigger: {
+//     trigger: items,
+//     start: 'top 50%',
+//   },
+// });
