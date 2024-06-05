@@ -30,7 +30,7 @@ let homeAnim = gsap.timeline({
   defaults: { duration: 0.25 },
   scrollTrigger: {
     trigger: homeDotEl,
-    start: 'top 50%',
+    start: 'top 55%',
   },
 });
 homeAnim.fromTo(homeDotEl, { opacity: 0 }, { opacity: 1 });
