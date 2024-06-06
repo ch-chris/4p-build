@@ -15,7 +15,7 @@ export const revealAnimation = function (targets: Element[]) {
         opacity: 1,
         scrollTrigger: {
           trigger: target,
-          start: 'top 55%',
+          start: 'top 65%',
         },
       }
     );

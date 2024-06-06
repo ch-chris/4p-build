@@ -86,8 +86,8 @@ gsap.fromTo(
     duration: 1,
     x: 25,
     scrollTrigger: {
-      trigger: dragEl,
-      start: 'top 75%',
+      trigger: splideMainEl,
+      start: 'top 65%',
     },
     ease: 'power1.inOut',
     repeat: 4,
