@@ -13,9 +13,10 @@ export const revealAnimation = function (targets: Element[]) {
       {
         y: 0,
         opacity: 1,
+        delay: ScrollTrigger.isInViewport(target, 0.85) ? 2.15 : 0,
         scrollTrigger: {
           trigger: target,
-          start: 'top 65%',
+          start: 'top 80%',
         },
       }
     );

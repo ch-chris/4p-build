@@ -25,6 +25,7 @@ const homeDotInnerEl = document.querySelectorAll('[p-selector="dot-inner"]');
 const homeLineEl = document.querySelectorAll('[p-selector="line"]');
 const homeHeader = document.querySelectorAll('[p-selector="header"]');
 const yearEl = document.querySelectorAll('[p-selector="number"]');
+const changeGreenEl = document.querySelector('[p-selector="green"]');
 
 let homeAnim = gsap.timeline({
   defaults: { duration: 0.25 },
@@ -44,14 +45,18 @@ homeAnim.from(yearEl, {
   snap: { textContent: 1 },
   stagger: 1,
 });
-
-// gsap.from(items, {
-//   textContent: 0,
-//   duration: 1,
-//   snap: { textContent: 1 },
-//   stagger: 1,
-//   scrollTrigger: {
-//     trigger: items,
-//     start: 'top 50%',
-//   },
-// });
+gsap.fromTo(
+  changeGreenEl,
+  {
+    color: '#bfbfbf',
+  },
+  {
+    color: '#69bb17',
+    duration: 2,
+    ease: 'power1.inOut',
+    scrollTrigger: {
+      trigger: changeGreenEl,
+      start: 'top 85%',
+    },
+  }
+);

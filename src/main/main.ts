@@ -13,7 +13,7 @@ const onLoadEls = Array.from(
 );
 //accordion elements
 const accordions = Array.from(
-  document.querySelectorAll('[p-selector="accordion"]')
+  document.querySelectorAll('[p-element="accordion"]')
 );
 //reveal elements
 const revealEls = Array.from(
