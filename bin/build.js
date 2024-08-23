@@ -11,6 +11,7 @@ const ENTRY_POINTS = [
   'src/main/main.ts',
   'src/home/home.ts',
   'src/about/about.ts',
+  'src/ingredients/ingredients.js',
 ];
 
 // Config dev serving
